@@ -1,0 +1,13 @@
+body {
+    background: dodgerblue;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: rgb(2, 26, 49);
+    color: floralwhite;
+}
+
+.searchButton {
+    text-align: center;
+}
