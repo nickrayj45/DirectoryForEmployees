@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import API from "../../utils/API";
+// import workers from "./workers.json";
+
 // styles if there is one
 // import TableBody from "../TableBody.js";
 
@@ -9,26 +11,28 @@ class TableData extends Component {
       users: [],
       filteredUsers: [],
       results: [],
-      error: ""
+      error: "",
     };
 
-componentDidMount() {
-        API.getUsers()
-          .then(res => this.setState({ users: res.results }))
-          .catch(err => console.log(err));
-      }
+ componentDidMount() {
+            API.getUsers()
+              .then(res => this.setState({ users: res.results }))
+              .catch(err => console.log(err));
+          }
     
 render(){
     return(
         <div className="tableData"> 
-            {this.state.users.map(user => (
+            {this.state.workers.map(user => (
           
-        <p>{user.gender}</p>
+        <p>{user.name}</p>
         ))};
         </div>
     );
 };
 };
+
+
 
 // Map function inside containing div on line 23, map over this.state.users, look at Pupster app at SearchForm.js
 
