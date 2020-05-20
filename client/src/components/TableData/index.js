@@ -9,18 +9,22 @@ import TableBody from "../TableBody/index"
 export default class TableData extends Component {
   state = {
     search: "",
-    users: [{}],
+    users: {},
     filteredUsers: [],
     results: [],
     error: "",
   };
+  
 
   componentDidMount() {
     //  console.log(this.state)
-    API.getUsers()
-      .then((res) => {
-        console.log(res);
-        this.setState({ users: res.data.results });
+    API.getEmployees()
+      .then((results) => {
+        console.log(results);
+        // console.log(res.data.results[0].id.value);
+        // console.log(res.data.results[0].email);
+        // console.log(res.data.results[0].picture.large);
+        this.setState({ users: results });
       })
       .catch((err) => console.log(err));
   }

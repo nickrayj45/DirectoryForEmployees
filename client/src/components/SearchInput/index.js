@@ -4,7 +4,7 @@ import "./style.css";
 function SearchInput() {
   return (
     <div className="searchInput">
-      <input class="display-4" placeholder="name">Employee Directory</input>
+      <input className="display-4" placeholder="name">Employee Directory</input>
       
     </div>
   );
