@@ -3,8 +3,8 @@ import "./style.css";
 
 function SearchInput() {
   return (
-    <div className="searchInpur">
-      <h1 class="display-4">Employee Directory</h1>
+    <div className="searchInput">
+      <input class="display-4" placeholder="name">Employee Directory</input>
       
     </div>
   );

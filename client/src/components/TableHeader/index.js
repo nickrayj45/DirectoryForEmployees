@@ -4,7 +4,7 @@ import "./style.css";
 function TableHeader() {
   return (
     <div className="tableHeader">
-      <h1 class="display-4">Employee Directory</h1>
+      <h1 class="display-4">Employees</h1>
       
     </div>
   );
