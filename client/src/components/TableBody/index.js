@@ -8,23 +8,28 @@ function TableBody( props ) {
       {props.users.map(user => {
         return (
 
-            <ul>
-              <li>
+            <tr>
+              <td>
                 <img src={user.picture.large} alt='employee'></img>
-              </li>
-              {/* <li>
-                {user.name}
-              </li>
-              <li>
-                {user.phone}
-              </li>*/
-              <li>
-                {user.email}
-              </li>
-              /*<li>
-                {user.id}
-              </li> */}
-            </ul>
+              </td>
+              <td>
+                {user.name.title}
+              </td>
+              <td>
+                {user.name.first}
+              </td>
+              <td>
+                {user.name.last}
+              </td>
+             <td>
+               {user.email}
+             </td>
+             <td>
+               {user.phone}
+             </td>
+             
+             
+            </tr>
 
         )
       })}
