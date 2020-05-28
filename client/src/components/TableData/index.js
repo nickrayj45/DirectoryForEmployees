@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import TableBody from "../TableBody";
+import SearchInput from "../SearchInput";
+
 // import TableBody from "../TableBody/index"
 // import workers from "./workers.json";
 
@@ -12,7 +14,9 @@ export default class TableData extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users :[]
+      users :[],
+      // search: "",
+      // error: ""
     }
   }
   // state = {
@@ -35,6 +39,14 @@ export default class TableData extends Component {
     // const data = await response.json();
     // this.setState({ person: data.results[0], loading: false })
 
+    // Beneath is where I tried to get the search input to work
+
+    // handleInputChange = event => {
+    //   this.setState({ search: event.target.value });
+    // };
+
+   
+
     API.getEmployees()
       .then( res => {
         console.log(res);
@@ -45,8 +57,9 @@ export default class TableData extends Component {
       }).catch((err) => console.log(err));
   }
 
-  //I need to create a function that will allow the users to search for an employee
-  // handleFormSubmit that will take in a user's input to look for someone
+  handleFormSubmit = event => {
+    console.log(event.target.value)
+    };
 
   render() {
 
@@ -60,19 +73,17 @@ export default class TableData extends Component {
     
     return (
       <div>
-
-        <div>
-          <TableBody users={this.state.users}/>
-        </div>
-        {/* {this.state.loading || this.state.person ? (
-          <div>loading...</div>
-        ) : (
-          <div>
-            <p>{this.state.person.name.title}</p>
-          </div>  
-        )
-      } */}
-      </div>
+      <SearchInput 
+      handleFormSubmit={this.handleFormSubmit}
+      users={this.state.users}
+      />
+      
+        
+      <TableBody users={this.state.users}/>
+      </div>   
+        
+    
+      
     )
     // (
     //   <div className="tableData">

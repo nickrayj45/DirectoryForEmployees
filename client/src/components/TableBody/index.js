@@ -4,11 +4,11 @@ import "./style.css";
 function TableBody( props ) {
   
   return (
-  <div>
-      {props.users.map(user => {
+  <tbody>
+      {props.users.map((user, index) => {
         return (
 
-            <tr>
+            <tr key={index}>
               <td>
                 <img src={user.picture.large} alt='employee'></img>
               </td>
@@ -33,7 +33,7 @@ function TableBody( props ) {
 
         )
       })}
-    </div>
+    </tbody>
   )
 }
 

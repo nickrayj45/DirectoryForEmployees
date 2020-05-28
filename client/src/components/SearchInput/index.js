@@ -1,11 +1,13 @@
 import React from "react";
 import "./style.css";
 
-function SearchInput() {
+function SearchInput({handleFormSubmit}) {
   return (
     <div className="searchInput">
-      <input className="display-4" placeholder="name">Employee Directory</input>
-      
+      <form>
+        <input className="display-4" type="Search" placeholder="type here" 
+      onSubmit={event => handleFormSubmit(event)}
+      ></input></form>
     </div>
   );
 }
