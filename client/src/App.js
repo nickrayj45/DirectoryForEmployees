@@ -21,7 +21,7 @@ function App() {
         
         <Main>
         <SearchInput/>
-
+        
         </Main>
       </Wrapper>
     </div>

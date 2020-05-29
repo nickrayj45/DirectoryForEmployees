@@ -10,90 +10,63 @@ import SearchInput from "../SearchInput";
 // import TableBody from "../TableBody.js";
 
 export default class TableData extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      users :[],
+      users: [],
+      filteredUsers: []
       // search: "",
       // error: ""
-    }
+    };
   }
-  // state = {
-  //   // loading: true,
-  //   person: {},
-  //   results: [],
-  //   id: ""
-  //   // search: "",
-  //   // users: {},
-  //   // filteredUsers: [],
-  //   // results: [],
-  //   // error: "",
-  // };
   
 
   componentDidMount() {
-    //console.log(this.state)
-    // const url = "https://randomuser.me/api/?results=200&nat=us";
-    // const response = await fetch(url);
-    // const data = await response.json();
-    // this.setState({ person: data.results[0], loading: false })
-
-    // Beneath is where I tried to get the search input to work
-
-    // handleInputChange = event => {
-    //   this.setState({ search: event.target.value });
-    // };
-
-   
 
     API.getEmployees()
-      .then( res => {
-        console.log(res);
+      .then((res) => {
+        // console.log(res);
         // console.log(results.results[0].id.value);
         // console.log(res.data.results[0].email);
         // console.log(res.data.results[0].picture.large);
-        this.setState({ users: res.data.results })
-      }).catch((err) => console.log(err));
+        this.setState({
+          users: res.data.results,
+          filteredUsers: res.data.results,
+        });
+      })
+      .catch((err) => console.log(err));
   }
 
-  handleFormSubmit = event => {
-    console.log(event.target.value)
-    };
+  handleOnChange = (event) => {
+    // console.log(event)
+    console.log(event.target.value);
+    const filter = event.target.value;
+    const filteredList = this.state.users.filter(item => {
+      // merge data together, then see if user input is anywhere inside
+      // console.log(item)
+      let values = Object.values(item)
+      
+        .join("")
+        .toLowerCase();
+      return values.indexOf(filter.toLowerCase()) !== -1;
+    });
+    this.setState({ filteredUsers: filteredList });
+    console.log(filteredList)
+  };
 
   render() {
-
-    // if (this.state.loading) {
-    //   return <div>loading...</div>
-    // }
-
-    // if (!this.state.person) {
-    //   return <div>didn't get a person</div>
-    // }
-    
     return (
       <div>
-      <SearchInput 
-      handleFormSubmit={this.handleFormSubmit}
-      users={this.state.users}
-      />
-      
-        
-      <TableBody users={this.state.users}/>
-      </div>   
-        
-    
-      
-    )
-    // (
-    //   <div className="tableData">
-    //     <TableBody users={this.state.users}>
-    //     </TableBody>
-
-    //   </div>
-    // );
-  };
-};
-
+        <SearchInput
+          handleOnChange={this.handleOnChange}
+          users={this.state.users}
+        />
+        <table>
+          <TableBody users={this.state.filteredUsers} />
+        </table>
+      </div>
+    );
+  }
+}
 
 // export default TableData;
